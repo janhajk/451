@@ -1,0 +1,15 @@
+{
+    "name": "451 Tools",
+    "description": "SIA 451 Tools",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "3.x",
+        "mongoose": "*",
+        "xml2js": "*",
+        "request": "*",
+        "async": "*"
+    }
+}
