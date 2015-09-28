@@ -82,10 +82,7 @@ db.connect(function() {
      *
      */
     // Start first cronrun after 6 seconds
-    setTimeout((function() {
-
-        });
-    })(), 6000);
+    setTimeout((function() {})(), 6000);
 
     setInterval((function() {
 
