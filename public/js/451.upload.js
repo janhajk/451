@@ -44,7 +44,7 @@
                if (xhr.readyState == 4 && xhr.status == 200) {
                   if (xhr.responseText === true) {}
                }
-               form.parentNode.removeChild(form);
+               if (xhr.readyState === 4) form.parentNode.removeChild(form);
             };
             formData.append('file', this.files[0]);
             xhr.send(formData);
