@@ -15,6 +15,8 @@ var utils    = require(__dirname + '/lib/utils.js');
 
 var db       = require(__dirname + '/database/database.js');
 
+var busboy   = require('busboy');
+
 var app = express();
 app.configure(function(){
   app.use(express.compress());
@@ -26,6 +28,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.bodyParser({uploadDir: './uploads'}));
+  app.use(busboy());
 });
 
 // Asynchronous
@@ -50,14 +53,18 @@ app.get('/movies', auth, function(req, res) {
 */
 
 app.post('/fileupload', auth, function(req, res) {
-   console.log(req.body);
-   console.log(req.files);
-   var uploadedFile = req.files.file;
-   var tmpPath = uploadedFile.path;
-   console.log(tmpPath);
-   var targetPath = './uploads/' + uploadedFile.name;
-   res.send('File Uploaded to ' + tmpPath + ' - ' + uploadedFile.size + ' bytes');
+   req.pipe(req.busboy);
+   req.busboy.on('file', function (fieldname, file, filename) {
+      console.log(fieldname);
+      console.log(file);
+      console.log(filename);
+   });
 
+   // Busboy hat alle Formulardaten fertig verarbeitet
+   req.busboy.on('finish', function() {
+      // Sende Antwort zum Client
+      res.send('Datei wurde hochgeladen!');
+   });
 });
 /**
  * ajax post sample
