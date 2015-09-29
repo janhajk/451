@@ -45,7 +45,7 @@
                     alert(xhr.responseText); // handle response.
                 }
             };
-            formData.append('siafile', this.files[0]);
+            formData.append('file', this.files[0]);
             xhr.send(formData);
          };
 

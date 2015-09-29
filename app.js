@@ -25,7 +25,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use(express.bodyParser());
+  app.use(express.bodyParser({uploadDir: './uploads'}));
 });
 
 // Asynchronous
@@ -50,6 +50,7 @@ app.get('/movies', auth, function(req, res) {
 */
 
 app.post('/fileupload', auth, function(req, res) {
+   console.log(req.body);
    console.log(req.files);
    //res.json(req.siafiles);
    res.json('ok');
