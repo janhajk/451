@@ -3,11 +3,12 @@
 
       // Upload Formular
       var upload_form = function() {
-         var uploadform = document.createElement('div');
+         var uploadform    = document.createElement('div');
          var uploadbuttons = document.createElement('div');
-         var btnSpan = document.createElement('span');
-         var input = document.createElement('input');
-         var btnText = document.createTextNode('Datei auswählen');
+         var btnSpan       = document.createElement('span');
+         var input         = document.createElement('input');
+         var btnText       = document.createTextNode('Datei auswählen');
+         var form;
 
          btnSpan.className = 'btn btn-default btn-file';
          btnSpan.style.position = 'overflow';
@@ -41,19 +42,19 @@
             xhr.open('POST', '/fileupload', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    // Handle response.
-                    alert(xhr.responseText); // handle response.
+                   if (xhr.responseText === true) {}
                 }
+               
             };
             formData.append('file', this.files[0]);
             xhr.send(formData);
          };
 
-         btnSpan.appendChild(btnText);
+         btnSpan.append Child(btnText);
          btnSpan.appendChild(input);
          uploadform.appendChild(btnSpan);
 
-         var form = sbadmin_panel('info', '4', 'Neue 01s-Datei hochladen', uploadform, uploadbuttons);
+         form = sbadmin_panel('info', '4', 'Neue 01s-Datei hochladen', uploadform, uploadbuttons);
          return form;
       };
 
