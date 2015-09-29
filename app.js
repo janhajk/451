@@ -54,7 +54,7 @@ app.get('/movies', auth, function(req, res) {
 app.post('/fileupload', auth, upload.single('file'), function (req, res, next) {
    console.log(req.file);
    var content = req.file.buffer.toString();
-   res.json(true);
+   res.json(content);
 })
 
 /**

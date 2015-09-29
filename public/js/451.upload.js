@@ -41,16 +41,16 @@
             var formData = new FormData();
             xhr.open('POST', '/fileupload', true);
             xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                   if (xhr.responseText === true) {}
-                }
-               
+               if (xhr.readyState == 4 && xhr.status == 200) {
+                  if (xhr.responseText === true) {}
+               }
+               form.parentNode.removeChild(form);
             };
             formData.append('file', this.files[0]);
             xhr.send(formData);
          };
 
-         btnSpan.append Child(btnText);
+         btnSpan.appendChild(btnText);
          btnSpan.appendChild(input);
          uploadform.appendChild(btnSpan);
 
