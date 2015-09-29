@@ -37,17 +37,16 @@
          }
 
          input.onchange = function(){
-            alert(input.value)
-            var files = input.files;
-            var formData = new FormData();
-            formData.append('siafile', input.files[0]);
             var xhr = new XMLHttpRequest();
+            var formData = new FormData();
             xhr.open('POST', '/fileupload', true);
-            xhr.onload = function () {
-               if (xhr.status !== 200) {
-                  alert('Es gab einen Fehler beim Upload!');
-               }
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Handle response.
+                    alert(xhr.responseText); // handle response.
+                }
             };
+            formData.append('siafile', input.files[0]);
             xhr.send(formData);
          };
 
@@ -82,21 +81,3 @@
 
    });
 })();
-
-
-/*
-$(document).ready( function() {
-    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        
-        var input = $(this).parents('.input-group').find(':text'),
-            log = numFiles > 1 ? numFiles + ' files selected' : label;
-        
-        if( input.length ) {
-            input.val(log);
-        } else {
-            if( log ) alert(log);
-        }
-        
-    });
-});
-*/

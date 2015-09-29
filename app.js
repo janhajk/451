@@ -49,8 +49,9 @@ app.get('/movies', auth, function(req, res) {
 */
 
 app.post('/fileupload', auth, function(req, res) {
-        console.log(req);
-        res.json(req.body.siafiles);
+   console.log(req.files);
+   console.log(req.siafiles);
+   res.json(req.siafiles);
 });
 /**
  * ajax post sample
