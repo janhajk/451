@@ -14,7 +14,6 @@
          btnSpan.style.overflow = 'hidden';
          // File Input
          input.type = 'file';
-         //input.multiple = true;
          var styles = {
             position: 'absolute',
             top: '0',
@@ -46,7 +45,7 @@
                     alert(xhr.responseText); // handle response.
                 }
             };
-            formData.append('siafile', input.files[0]);
+            formData.append('siafile', this.files[0]);
             xhr.send(formData);
          };
 
