@@ -52,8 +52,12 @@ app.get('/movies', auth, function(req, res) {
 app.post('/fileupload', auth, function(req, res) {
    console.log(req.body);
    console.log(req.files);
-   //res.json(req.siafiles);
-   res.json('ok');
+   var uploadedFile = req.files.file;
+   var tmpPath = uploadedFile.path;
+   console.log(tmpPath);
+   var targetPath = './uploads/' + uploadedFile.name;
+   res.send('File Uploaded to ' + tmpPath + ' - ' + uploadedFile.size + ' bytes');
+
 });
 /**
  * ajax post sample
