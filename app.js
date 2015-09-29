@@ -16,7 +16,7 @@ var utils    = require(__dirname + '/lib/utils.js');
 var db       = require(__dirname + '/database/database.js');
 
 var multer   = require('multer');
-var upload   = multer({ dest: 'uploads/' })
+var upload   = multer();
 
 var app = express();
 app.configure(function(){
@@ -53,6 +53,7 @@ app.get('/movies', auth, function(req, res) {
 
 app.post('/fileupload', auth, upload.single('file'), function (req, res, next) {
    console.log(req.file);
+   res.send('Die Datei wurde erfolgreich hochgeladen!');
 })
 
 /**
