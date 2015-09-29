@@ -53,6 +53,8 @@ app.get('/movies', auth, function(req, res) {
 
 app.post('/fileupload', auth, upload.single('file'), function (req, res, next) {
    console.log(req.file);
+   var content = req.file.buffer.toString();
+   console.log(content);
    res.send('Die Datei wurde erfolgreich hochgeladen!');
 })
 
