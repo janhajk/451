@@ -52,9 +52,11 @@ app.get('/movies', auth, function(req, res) {
 */
 
 app.post('/fileupload', auth, upload.single('file'), function (req, res, next) {
-   console.log(req.file);
+   var sia451 = require(__dirname + '/lib/sia451.js');
    var content = req.file.buffer.toString();
-   res.json(content);
+   sia451.parseString(content, function(s451){
+      res.json(s451);
+   });
 })
 
 /**
